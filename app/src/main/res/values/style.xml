@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Style général de l'application-->
+    <style name="Theme.SpeedQuiz" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--Customisation du theme-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+    </style>
+    <!--Style input text -->
+    <style name="TextAppearence.SpeedQuiz.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <!--Style input text -->
+    <style name="Player.SpeedQuiz.TextInputLayer.Player" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="hintTextAppearance">@style/TextAppearence.SpeedQuiz.TextInputLayout.HintText</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <!--Style de button-->
+    <style name="Apply.SpeedQuiz.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/green</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="True.SpeedQuiz.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/green</item>
+        <item name="android:backgroundTint">@color/lightgreen</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">5dp</item>
+    </style>
+
+    <style name="Add.SpeedQuiz.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/red</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    <!--Style de text button-->
+    <style name="ret.SpeedQuiz.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/red</item>
+    </style>
+</resources>

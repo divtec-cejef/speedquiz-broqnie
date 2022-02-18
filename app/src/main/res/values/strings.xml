@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Jeu</string>
+    <string name="menu_about">Questions</string>
+    <string name="menu_jeu">Paramètres</string>
+    <string name="menu_apply">Appliquer et jouer</string>
+    <string name="menu_add">Ajouter un joueur</string>
+    <string name="hint_players">Nom du joueur</string>
+    <string name="bt_game_true">Vrai</string>
+    <string name="rb_create_false">Faux</string>
+    <string name="rb_create_true">Vrai</string>
+    <string name="question">Question !</string>
+    <string name="name_player">Nom du joueur : </string>
+    <string name="point_player">0</string>
+    <string name="bt_question_cancel">Cancel</string>
+    <string name="bt_question_validate">Valider</string>
+    <string name="bt_quitte">Quitter</string>
+    <string name="switch_mode">Mode nuit</string>
+    <string name="validation_nok">Validation pas possible</string>
+    <string name="add_question">Entrez la question à ajouter</string>
+    <string name="speed_question">Gérer le temps de réponse aux questions</string>
+</resources>
