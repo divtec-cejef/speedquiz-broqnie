@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class QuestionManager {
     private ArrayList<Question>mesQuestions = new ArrayList<>();
-    private int index = 0;
-    ArrayList<Question>questionsTirees = new ArrayList<>();
+
 
     public void setMesQuestions(ArrayList<Question> mesQuestions) {
         this.mesQuestions = mesQuestions;
@@ -17,10 +16,12 @@ public class QuestionManager {
          return (int) (Math.random() * mesQuestions.size());
     }
 
-    public ArrayList<Question> getQuestion(){
-        index++;
-        questionsTirees.add(mesQuestions.get(questionChoisi()));
-        return questionsTirees.get(index);
+    public Question getQuestion(){
+        int rnd = questionChoisi();
+        ArrayList<Question>questionsTirees = new ArrayList<>();
+        questionsTirees.add(mesQuestions.get(rnd));
+        mesQuestions.remove(rnd);
+        return questionsTirees.get(questionsTirees.size()-1);
 
     }
 
@@ -29,14 +30,5 @@ public class QuestionManager {
         mesQuestions.add(new Question("Janvier a 31 jours",1));
         mesQuestions.add(new Question("l'alphabet à 25 lettres", 0));
     }
-
-    public void resetQuestion(){
-        if (index.equals(mesQuestions.size()-1)){
-            questionsTirees.removeAll(questionsTirees);
-        }
-
-    }
-
-            question tiré tant que liste.lenght pas égale a question passé
 
 }
