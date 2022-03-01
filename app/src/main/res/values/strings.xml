@@ -18,4 +18,7 @@
     <string name="validation_nok">Validation pas possible</string>
     <string name="add_question">Entrez la question à ajouter</string>
     <string name="speed_question">Gérer le temps de réponse aux questions</string>
+    <string name="Menu">Menu</string>
+    <string name="Restart">Rejouer</string>
+    <string name="gagnant">Gagnant : </string>
 </resources>

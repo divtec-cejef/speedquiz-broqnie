@@ -31,4 +31,7 @@ public class QuestionManager {
         mesQuestions.add(new Question("l'alphabet à 25 lettres", 0));
     }
 
+    public boolean etatListeQuestion(){
+        return mesQuestions.size() < 0;
+    }
 }

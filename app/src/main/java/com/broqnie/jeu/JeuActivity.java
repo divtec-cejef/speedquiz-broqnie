@@ -1,16 +1,25 @@
 package com.broqnie.jeu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
+
+import com.broqnie.jeu.Controllers.QuestionManager;
+import com.broqnie.jeu.Models.Question;
 
 public class JeuActivity extends AppCompatActivity {
         public TextView et_nom_joueur1;
         public TextView et_nom_joueur2;
+        public ConstraintLayout jeu;
+        public ConstraintLayout param_finJeu;
         Runnable questionRunnable=null;
+        public int pointJoueur1 = 0;
+        public int pointJoueur2 = 0;
 
 
         @Override
@@ -21,6 +30,8 @@ public class JeuActivity extends AppCompatActivity {
 
             et_nom_joueur1 = findViewById(R.id.nom_joueur1);
             et_nom_joueur2 = findViewById(R.id.nom_joueur2);
+            jeu = findViewById(R.id.jeu);
+            param_finJeu = findViewById(R.id.param_finjeu);
         }
 
         @Override
@@ -32,22 +43,28 @@ public class JeuActivity extends AppCompatActivity {
 
         }
         public void tempsQuestion(){
+            QuestionManager i = new QuestionManager();
+            Question e = new Question();
             Handler handler = new Handler();
             questionRunnable = new Runnable() {
                 @Override
                 public void run(){
-                    if("CONTROL_LAST_QUESTION"){
+                    if(QuestionManager.etatListeQuestion()){
                         'DO_CODE_LAST_QUESTION
                         '...
                         handler.removeCallbacks(this);
-                        'DO_OTHER_EXIT_CODE
+                        jeu.setVisibility(View.GONE);
+                        param_finJeu.setVisibility(View.VISIBLE);
+                        pointJoueur1=0;
+                        pointJoueur2=0;
                     }else{
-                        'DO_CODE_QUESTION_ITERATION
-                        handler.postDelayed(this,"TIMER_MILLIS_QUESTION_DELAY");
+
+                        et_nom_joueur1.setText(QuestionManager.);
+                        handler.postDelayed(this,2000);
                     }
                 }
             };
-            handler.postDelayed(questionRunnable,"TIMER_MILLIS_ITERATION_START");
+            handler.postDelayed(questionRunnable,2000);
         }
 
 }
