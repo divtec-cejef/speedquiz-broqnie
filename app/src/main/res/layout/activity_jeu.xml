@@ -108,17 +108,16 @@
         tools:context=".MainActivity">
 
         <Button
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/buttonMenu"
             style="@style/True.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/main_margin_right"
             android:text="@string/Menu"
-            android:textSize="@dimen/main_text_True"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.502"
-            tools:layout_editor_absoluteX="15dp" />
+            android:textSize="@dimen/main_text_True" />
 
         <Button
             android:id="@+id/buttonRestart"
@@ -136,7 +135,7 @@
             android:id="@+id/gagnant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:text="@string/gagnant"
             android:textAlignment="center"
             android:textSize="@dimen/main_text_True"
@@ -146,7 +145,7 @@
             android:id="@+id/joueurGagnant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_constraintLeft_toRightOf="@id/gagnant"
+            app:layout_constraintLeft_toRightOf="@id/gagnant"
             android:text="@string/hint_players"
             android:textAlignment="center"
             android:textSize="@dimen/main_text_True"
