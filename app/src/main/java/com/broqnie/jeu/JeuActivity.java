@@ -40,13 +40,11 @@ public class JeuActivity extends AppCompatActivity {
     public Question questionAffichee;
     public TextView gagnant;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_jeu);
-
         et_nom_joueur1 = findViewById(R.id.nom_joueur1);
         et_nom_joueur2 = findViewById(R.id.nom_joueur2);
         jeu = findViewById(R.id.jeu);
@@ -55,7 +53,6 @@ public class JeuActivity extends AppCompatActivity {
         et_question_joueur1 = findViewById(R.id.question1);
         menu = findViewById(R.id.buttonMenu);
         restart = findViewById(R.id.buttonRestart);
-
         et_joueur1 = findViewById(R.id.et_player1);
         et_joueur2 = findViewById(R.id.et_player2);
         et_pointJoueur1 = findViewById(R.id.point_joueur1);
@@ -76,6 +73,7 @@ public class JeuActivity extends AppCompatActivity {
         bt_vrai1.setEnabled(false);
         bt_vrai2.setEnabled(false);
 
+        //Lors d'un click sur le bouton menu l'utilisateur est renvoyé au menu (disponible a la fin du jeu)
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +84,7 @@ public class JeuActivity extends AppCompatActivity {
             }
         });
 
+        //Lors d'un click sur le bouton restart l'utilisateur rejoue (disponible a la fin du jeu)
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +95,7 @@ public class JeuActivity extends AppCompatActivity {
             }
         });
 
+        //Bouton du joueur 1 pour répondre aux questions (disponible durant le jeu)
         bt_vrai1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,13 +104,14 @@ public class JeuActivity extends AppCompatActivity {
                     bt_vrai2.setEnabled(false);
                     pointJoueur1++;
                     et_pointJoueur1.setText(pointJoueur1.toString());
-                } else if(pointJoueur1 > 0){
+                } else if (pointJoueur1 > 0) {
                     pointJoueur1--;
                     et_pointJoueur1.setText(pointJoueur1.toString());
                 }
             }
         });
 
+        //Bouton du joueur 2 pour répondre aux questions (disponible durant le jeu)
         bt_vrai2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +121,7 @@ public class JeuActivity extends AppCompatActivity {
                     pointJoueur2++;
                     et_pointJoueur2.setText(pointJoueur2.toString());
                 } else {
-                    if(pointJoueur2 > 0){
+                    if (pointJoueur2 > 0) {
                         pointJoueur2--;
                         et_pointJoueur2.setText(pointJoueur2.toString());
                     }
@@ -129,6 +130,9 @@ public class JeuActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * s'occupe du défilement et de l'affichage des questions
+     */
     public void tempsQuestion() {
         QuestionManager qm = new QuestionManager();
         Handler handler = new Handler();
@@ -136,7 +140,6 @@ public class JeuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (qm.etatListeQuestion()) {
-
                     handler.removeCallbacks(this);
                     jeu.setVisibility(View.GONE);
                     param_finJeu.setVisibility(View.VISIBLE);
@@ -158,27 +161,32 @@ public class JeuActivity extends AppCompatActivity {
         handler.postDelayed(questionRunnable, 2000);
     }
 
-    private void gagnant(){
-        if(pointJoueur1 > pointJoueur2){
+    /**
+     * Retourne le gagnant en l'affichant dans la text view
+     * le gagnant est définit en fonction du nombre de point
+     */
+    private void gagnant() {
+        if (pointJoueur1 > pointJoueur2) {
             gagnant.setText(et_nom_joueur1.getText().toString());
-        }else if (pointJoueur1 < pointJoueur2){
-            gagnant.setText(et_nom_joueur2.getText().toString().substring(0, et_nom_joueur2.getText().toString().length()-3));
-        }else {
+        } else if (pointJoueur1 < pointJoueur2) {
+            gagnant.setText(et_nom_joueur2.getText().toString().substring(0, et_nom_joueur2.getText().toString().length() - 3));
+        } else {
             gagnant.setText("Egalité, bien joué !");
         }
     }
 
+    /**
+     * cache les barres de l'appareil
+     */
     private void hideSystemBars() {
         WindowInsetsControllerCompat windowInsetsController =
                 ViewCompat.getWindowInsetsController(getWindow().getDecorView());
         if (windowInsetsController == null) {
             return;
         }
-        // Configure the behavior of the hidden system bars
         windowInsetsController.setSystemBarsBehavior(
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         );
-        // Hide both the status bar and the navigation bar
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
     }
 }

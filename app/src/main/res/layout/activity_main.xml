@@ -6,266 +6,258 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="visible"
-        android:layout_width="match_parent"
         android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:visibility="visible"
         tools:context=".MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/topAppBar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolAppBar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/app_name"
-                android:id="@+id/toolAppBar"
                 app:menu="@menu/main_menu"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
-                />
+                app:title="@string/app_name" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <Button
-            app:layout_constraintTop_toBottomOf="@id/topAppBar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent"
             android:id="@+id/buttonAdd"
+            style="@style/Add.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/menu_add"
-            style="@style/Add.SpeedQuiz.Button"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_players"
-            android:textSize="@dimen/main_text_size"
-            android:layout_margin="@dimen/main_component_space"
-            android:maxLines="1"
-            android:id="@+id/main_player1"
-            style="@style/Player.SpeedQuiz.TextInputLayer.Player">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_player1"
-                android:inputType="text"
-                android:visibility="gone"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_player1"
-            android:id="@+id/main_player2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_players"
-            android:textSize="@dimen/main_text_size"
-            android:layout_margin="@dimen/main_component_space"
-            android:maxLines="1"
-            style="@style/Player.SpeedQuiz.TextInputLayer.Player">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_player2"
-                android:inputType="text"
-                android:visibility="gone"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <Button
-            app:layout_constraintTop_toBottomOf="@id/main_player2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topAppBar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/main_player1"
+            style="@style/Player.SpeedQuiz.TextInputLayer.Player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_component_space"
+            android:hint="@string/hint_players"
+            android:maxLines="1"
+            android:textSize="@dimen/main_text_size"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAdd">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:visibility="gone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/main_player2"
+            style="@style/Player.SpeedQuiz.TextInputLayer.Player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_component_space"
+            android:hint="@string/hint_players"
+            android:maxLines="1"
+            android:textSize="@dimen/main_text_size"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_player1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_player2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:visibility="gone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
             android:id="@+id/buttonApply"
+            style="@style/Apply.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/menu_apply"
-            style="@style/Apply.SpeedQuiz.Button"
             android:visibility="gone"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_player2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--*****************************************************
-Question
-********************************************************-->
+    <!--*****************************************************
+    Question
+    ********************************************************-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
         android:id="@+id/param_question"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         tools:context=".MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/nom_menu_quest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nom_menu_quest">
+            app:layout_constraintTop_toTopOf="parent">
+
             <com.google.android.material.appbar.MaterialToolbar
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/menu_about"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
-                />
+                app:title="@string/menu_about" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nom_menu_quest"
+            android:id="@+id/question_creation"
+            style="@style/Player.SpeedQuiz.TextInputLayer.Player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/add_question"
-            android:textSize="@dimen/main_text_size"
             android:layout_margin="@dimen/main_component_space"
+            android:hint="@string/add_question"
             android:maxLines="1"
-            android:id="@+id/question_creation"
-            style="@style/Player.SpeedQuiz.TextInputLayer.Player">
+            android:textSize="@dimen/main_text_size"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nom_menu_quest">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/question_creation_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:id="@+id/question_creation_txt"
-                />
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <RadioGroup
-            app:layout_constraintTop_toBottomOf="@id/question_creation"
             android:id="@+id/rb_create_question_group"
-            android:checkedButton="@+id/radio_button_1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_button_1"
+            app:layout_constraintTop_toBottomOf="@id/question_creation">
+
             <RadioButton
                 android:id="@+id/radio_button_Vrai"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/rb_create_true"/>
+                android:text="@string/rb_create_true" />
+
             <RadioButton
                 android:id="@+id/radio_button_Faux"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/rb_create_false"/>
+                android:text="@string/rb_create_false" />
 
         </RadioGroup>
+
         <Button
-            app:layout_constraintTop_toBottomOf="@id/rb_create_question_group"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/button_cancel"
-            app:layout_constraintLeft_toRightOf="parent"
             android:id="@+id/button_cancel"
+            style="@style/Add.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bt_question_cancel"
-            style="@style/Add.SpeedQuiz.Button"
-            />
-
-        <Button
-            app:layout_constraintTop_toBottomOf="@id/rb_create_question_group"
-            app:layout_constraintRight_toLeftOf="@id/button_cancel"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button_cancel"
+            app:layout_constraintTop_toBottomOf="@id/rb_create_question_group" />
+
+        <Button
             android:id="@+id/button_create"
-            android:enabled="false"
-            android:layout_marginRight="@dimen/main_margin_right"
+            style="@style/Apply.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/main_margin_right"
+            android:enabled="false"
             android:text="@string/validation_nok"
-            style="@style/Apply.SpeedQuiz.Button"
-            />
-
-        <Button
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button_cancel"
+            app:layout_constraintTop_toBottomOf="@id/rb_create_question_group" />
+
+        <Button
             android:id="@+id/button_quitte_question"
+            style="@style/Add.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bt_quitte"
-            style="@style/Add.SpeedQuiz.Button"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--*****************************************************
-paramètres
-********************************************************-->
+    <!--*****************************************************
+    paramètres
+    ********************************************************-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
         android:id="@+id/param_parametre"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:context=".MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/nom_menu_param"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nom_menu_param">
+            app:layout_constraintTop_toTopOf="parent">
+
             <com.google.android.material.appbar.MaterialToolbar
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/menu_jeu"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
-                />
+                app:title="@string/menu_jeu" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_mode"
             android:layout_width="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/nom_menu_param"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:id="@+id/switch_mode"
             android:text="@string/switch_mode"
-            android:textSize="@dimen/main_text_size1"/>
+            android:textSize="@dimen/main_text_size1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nom_menu_param" />
 
         <TextView
+            android:id="@+id/txt_slider"
             android:layout_width="match_parent"
-            android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/switch_mode"
             android:layout_height="wrap_content"
             android:text="@string/speed_question"
+            android:textAlignment="center"
             android:textSize="@dimen/main_text_size1"
-            android:id="@+id/txt_slider"
-            android:textStyle="italic" />
-
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/switch_mode" />
 
         <com.google.android.material.slider.Slider
+            android:id="@+id/param_slider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:stepSize="1.0"
-            android:id="@+id/param_slider"
-            app:layout_constraintTop_toBottomOf="@+id/txt_slider"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:valueFrom="1.0"
-            android:valueTo="10.0" />
+            android:valueTo="10.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_slider" />
 
         <Button
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent"
             android:id="@+id/button_quitte_parametre"
+            style="@style/Add.SpeedQuiz.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bt_quitte"
-            style="@style/Add.SpeedQuiz.Button"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

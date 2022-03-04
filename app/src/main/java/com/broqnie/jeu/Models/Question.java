@@ -4,19 +4,35 @@ public class Question {
     private String question;
     private int reponse;
 
-    public Question(){
+    /**
+     * constructeur de question
+     */
+    public Question() {
     }
 
-    public Question(String question, int reponse){
+    /**
+     * constructeur de question
+     */
+    public Question(String question, int reponse) {
         this.question = question;
         this.reponse = reponse;
     }
 
-    public String getQuestionText(){
+    /**
+     * donne le texte d'une question
+     *
+     * @return le texte d'une question
+     */
+    public String getQuestionText() {
         return question;
     }
 
-    public int getReponse(){
+    /**
+     * donne la réponse de la question
+     *
+     * @return la reponse de la question( 0 = faux, 1 = vrai)
+     */
+    public int getReponse() {
         return reponse;
     }
 }

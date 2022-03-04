@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
         bt_ajouter_player = findViewById(R.id.buttonAdd);
         et_joueur1 = findViewById(R.id.et_player1);
         et_joueur2 = findViewById(R.id.et_player2);
-        bt_appliquer= findViewById(R.id.buttonApply);
-        sw_mode= findViewById(R.id.switch_mode);
-        bt_cancel=findViewById(R.id.button_cancel);
-        bt_valider=findViewById(R.id.button_create);
-        et_question_txt=findViewById(R.id.question_creation_txt);
-        rb_vrai=findViewById(R.id.radio_button_Vrai);
-        rb_faux=findViewById(R.id.radio_button_Faux);
+        bt_appliquer = findViewById(R.id.buttonApply);
+        sw_mode = findViewById(R.id.switch_mode);
+        bt_cancel = findViewById(R.id.button_cancel);
+        bt_valider = findViewById(R.id.button_create);
+        et_question_txt = findViewById(R.id.question_creation_txt);
+        rb_vrai = findViewById(R.id.radio_button_Vrai);
+        rb_faux = findViewById(R.id.radio_button_Faux);
 
 
     }
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        //ajoute un Edit Texte pour créer un joueur
         bt_ajouter_player.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,15 +75,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Quand les deux Edit Texte ont été remplis le jeu commence et envoie le nom des joueurs en paramètre
         bt_appliquer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), JeuActivity.class);
-                intent.putExtra("joueur1", et_joueur1.getText().toString()+" : ");
-                intent.putExtra("joueur2", et_joueur2.getText().toString()+" : ");
+                intent.putExtra("joueur1", et_joueur1.getText().toString() + " : ");
+                intent.putExtra("joueur2", et_joueur2.getText().toString() + " : ");
                 startActivity(intent);
             }
         });
+
+        //annule les paramètres et supprime le texte d'une question lors de la saisie
 
         bt_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,9 +97,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //test si l'Edit texte du joueur 1 varie et effectue des opération suivants les changements
         et_joueur1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -107,32 +113,34 @@ public class MainActivity extends AppCompatActivity {
                 et_joueur2.setVisibility(View.VISIBLE);
                 if (et_joueur1.getText().toString().matches("") && et_joueur2.getText().toString().matches("")) {
                     bt_appliquer.setVisibility(View.GONE);
-                }else if(et_joueur1.getText().toString().matches("")|| et_joueur2.getText().toString().matches("")) {
+                } else if (et_joueur1.getText().toString().matches("") || et_joueur2.getText().toString().matches("")) {
                     bt_appliquer.setVisibility(View.GONE);
-                }else {
+                } else {
                     bt_appliquer.setVisibility(View.VISIBLE);
                 }
             }
         });
 
+        //test si l'Edit texte de la question varie et effectue des opération suivants les changements
         et_question_txt.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!et_question_txt.getText().toString().matches("")){
-                    if(!rb_faux.isChecked() && rb_vrai.isChecked()) {
+                if (!et_question_txt.getText().toString().matches("")) {
+                    if (!rb_faux.isChecked() && rb_vrai.isChecked()) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else if (rb_faux.isChecked() && !rb_vrai.isChecked()){
+                    } else if (rb_faux.isChecked() && !rb_vrai.isChecked()) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else{
+                    } else {
                         bt_valider.setEnabled(false);
                         bt_valider.setText("Validation pas possible");
                     }
-                }else{
+                } else {
                     bt_valider.setEnabled(false);
                     bt_valider.setText("Validation pas possible");
                 }
@@ -140,27 +148,29 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!et_question_txt.getText().toString().matches("")){
-                    if(!rb_faux.isChecked() && rb_vrai.isChecked()) {
+                if (!et_question_txt.getText().toString().matches("")) {
+                    if (!rb_faux.isChecked() && rb_vrai.isChecked()) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else if (rb_faux.isChecked() && !rb_vrai.isChecked()){
+                    } else if (rb_faux.isChecked() && !rb_vrai.isChecked()) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else{
+                    } else {
                         bt_valider.setEnabled(false);
                         bt_valider.setText("Validation pas possible");
                     }
-                }else{
+                } else {
                     bt_valider.setEnabled(false);
                     bt_valider.setText("Validation pas possible");
                 }
             }
         });
 
+        //test si l'Edit texte du joueur 2 varie et effectue des opération suivants les changements
         et_joueur2.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -172,14 +182,15 @@ public class MainActivity extends AppCompatActivity {
                 bt_appliquer.setVisibility(View.VISIBLE);
                 if (et_joueur1.getText().toString().matches("") && et_joueur2.getText().toString().matches("")) {
                     bt_appliquer.setVisibility(View.GONE);
-                }else if(et_joueur1.getText().toString().matches("")|| et_joueur2.getText().toString().matches("")) {
+                } else if (et_joueur1.getText().toString().matches("") || et_joueur2.getText().toString().matches("")) {
                     bt_appliquer.setVisibility(View.GONE);
-                }else {
+                } else {
                     bt_appliquer.setVisibility(View.VISIBLE);
                 }
             }
         });
 
+        //Quitte la page de paramètre 'Questions'
         bt_quitte_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -192,17 +203,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //test si les paramètres sont suffisant pour ajouter la question et effectue des opérations selon le résultat
         rb_faux.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    if(!et_question_txt.getText().toString().matches("")){
+                if (b) {
+                    if (!et_question_txt.getText().toString().matches("")) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else if(rb_vrai.isChecked()&&!et_question_txt.getText().toString().matches("")){
+                    } else if (rb_vrai.isChecked() && !et_question_txt.getText().toString().matches("")) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else{
+                    } else {
                         bt_valider.setEnabled(false);
                         bt_valider.setText("Validation pas possible");
                     }
@@ -210,17 +222,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //test si les paramètres sont suffisant pour ajouter la question et effectue des opérations selon le résultat
         rb_vrai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    if(!et_question_txt.getText().toString().matches("")){
+                if (b) {
+                    if (!et_question_txt.getText().toString().matches("")) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else if(rb_vrai.isChecked()&&!et_question_txt.getText().toString().matches("")){
+                    } else if (rb_vrai.isChecked() && !et_question_txt.getText().toString().matches("")) {
                         bt_valider.setEnabled(true);
                         bt_valider.setText("valider");
-                    }else{
+                    } else {
                         bt_valider.setEnabled(false);
                         bt_valider.setText("Validation pas possible");
                     }
@@ -228,17 +241,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //permet de règler le mode (jour ou nuit) de l'application
         sw_mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }else{
+                } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
         });
 
+        //Quitte la page de paramètre 'Paramètres'
         bt_quitte_param.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -249,13 +264,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public boolean onCreateOptionsMenu (Menu menu){
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+
     @Override
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_param:
                 main.setVisibility(View.GONE);
